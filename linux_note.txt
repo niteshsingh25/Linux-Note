@@ -1,0 +1,50 @@
+M1-Understanding Linux Concepts
+---------------------------------------------
+Linux is used everywhere around us.
+ Aeroplane,Internet Access,TV ,Websites,Smartphones,Appliances,Tabletes,Self Driving Cars,..etc.
+
+->Linux is an Operating System which sits in the middle of your hardware and users.
+->Linux is open source and mostly free.
+->Linux is used by many developers community or Companies(Redhat,CentOS,Debian,Ubuntu,Suse).
+->Linux can be installed on a wide veriety of computer h/w, ranging from Moblie phones,tablates,vedia games, to mainframes and supercomputers.
+
+=======================================================================
+M2-Download Install and Configuration Linux
+-----------------------------------------------------------
+What is Oracle VertualBox
+->VirtualBox is a open source hypervisor for x86 computer currently being developed by Oracle Corporation.
+->It install on your existing Intel or AMD_based computers,whether they are running Windows,Mac,Linux or solaris OS.It extends the capabilities of your existing computerso that it can run multiple OS on one h/w at the same time.
+  For eg.
+Hardware->OS(Windows or MAC)->Oracle VertuaBox->Linux/Windows/MAC
+
+Oracle VirtualBox Download and Installation
+----------------------------------------------------------
+->Download it from google.only type Oracle VitualBox.
+->Select any one from below VirtualBox plateform packages  for download as per our requirement
+     ->Windows host
+     ->Os X hosts (for Mac)
+     ->Linux distributions
+     ->Solaris hosts 
+->Install the package as default setup.
+->Now we are ready to use VirtualBox.
+
+Create Virtual Machine on VirtualBox
+-----------------------------------------------
+->Open Virtual Box manager
+     ->Click on new 
+     ->Name of VM
+     ->Machine Folder (Install path)
+     ->Type (Linux/CentOS/ubuntu...etc)
+     ->Version -windows10(64bit)  --As per our base OS
+     ->Select Hard disk -createa virtual hard disk now
+     ->Click on create
+     ->Give file size as per requirement
+     ->Select default setting for VDI(virtual disk image) and Storage on physical hard disk(Dynamically allocated)
+     ->Click on create
+ ->Ready to use VM
+
+Different way to install Linux
+-------------------------------------
+1-CD -Boot from it and follow the instructions.
+2-ISO image -Download or getit if already you have package.
+                         ->Attache the ISO package to your VM hard disk and follow the instruction.
