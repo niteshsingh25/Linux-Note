@@ -1,4 +1,4 @@
-M1-Understanding Linux Concepts
+Module 1-Understanding Linux Concepts
 ---------------------------------------------
 Linux is used everywhere around us.
  Aeroplane,Internet Access,TV ,Websites,Smartphones,Appliances,Tabletes,Self Driving Cars,..etc.
@@ -9,7 +9,7 @@ Linux is used everywhere around us.
 ->Linux can be installed on a wide veriety of computer h/w, ranging from Moblie phones,tablates,vedia games, to mainframes and supercomputers.
 
 =======================================================================
-M2-Download Install and Configuration Linux
+Module 2 - Download, Install and Configure
 -----------------------------------------------------------
 What is Oracle VertualBox
 ->VirtualBox is a open source hypervisor for x86 computer currently being developed by Oracle Corporation.
@@ -78,4 +78,88 @@ Arrow Up/Down ---Scroll through previously used commands.
 reset	Resets the terminal if the terminal screen is not displaying correctly.
 shutdown -h now	Remotely or locally shuts the system down.
 ====================================================
+RedHat Vs CentOS
+--------------------------------
+Product release: Where the RHEL initially released in 13th May 1995 and considered as a few original old Linux destroy, the CentOS is based on RHEL code itself. The CentOS first came into the market on 14th May 2004.
 
+Pricing: The CentOS is free to use. But for the Red Hat Enterprise Linux, you need to purchase a paid license.
+
+Performance focus: Because the RHEL or Red Hat Enterprise Linux is older, so it supports many platform and freeware. But the RHEL focus is to make a stable system. Likewise, the CentOS also focus on stability, but it misses deep intermigration by the coder and user.
+
+Users: Consequently, the RHEL is used by many important platforms, data centers, servers, etc. The CentOS is used by less critical business platforms, due to its non-official or public support groups.
+
+Support: Lastly, the CentOS is supported by its community or it’s community driven support. If a bug comes or beta version of CentOS comes, they try and make it perfectly workable. But the RHEL is supported by their closed developers- ‘Red Hat’ itself. There are few open communities are present for RHEL but the hard work for any problem solving is performed by the ‘Team Red Hat’.
+
+->Redhat is the corporate version based on the progress of that project, and it has slower releases, comes with support, and isn’t free.
+->CentOS is basically the community version of Redhat. So it’s pretty much identical, but it is free and support comes from the community as opposed to Redhat itself.
+
+
+Basis Comparison between Ubuntu vs OpenSUSE	
+
+                                                       Ubuntu                                      OpenSUSE
+
+Developer	                               Canonical	                       openSUSE Project
+OS family	                                Linux	                       SUSE Linux
+Source Model	          Open Source	                        Open Source
+Release	                             20 October 2004	                         October 2005
+Kernel type	          Monolithic	                          Monolithic
+Userland	                                       GNU	                               GNU
+Default User Interface      GNOME, Ubuntu Unity	         GNOME 3 or KDE Plasama 5
+Cost	                              Free, Open Source	          Open Source
+Viruses	                             Viruses can’t survive in this.	        Can’t attack
+Packet manager	                            dpkg	                                    RPM
+Version	                                   Ubuntu 18.04                       	15
+Current Linux Kernel	                       4.15	                                    4.12.14
+Updates	                                Updates are very easy	            Rolling release
+Programming	         Programming part is very easy.	It’s easy in this.
+Entertainment	         It is not built for that.	            Can watch in this.
+MS Office Work	         Comfortable with MS office	      It supports this
+Gaming	                    You can’t play games on this.	Not built for games
+Adobe and Photoshop support	Not much support.	Same like ubuntu
+Performance(RAM and Core)	Better	Good
+Security	No need for Antivirus and Firewall.	No need.
+Learning	It is not easy to learn	It’s easy in comparison of ubuntu
+================================================================
+Module 3 - System Access and File System
+------------------------------------------------------
+[root@hostname ~]#-Prompt symbol
+============================================
+Same optput will all below cmds:
+#ip a
+#ip addr
+#ifconfig 
+If "ifconfig" cmd does not work then typr "ip a".
+ifconfig is replavced by ip cmd in newer version of Linux.
+===============================================================
+Host-only Adapter= Aloow communication between your PC and the VM.
+Bridged Adapter=Allow communication between your pC and VM plus allows communication to the internet.
+->If network adopter is not up then follow as below:
+#Sudo su -
+#ifup enp0s3 (adoptername)
+#ifconfig  -Check status
+
+====================================
+Imp Things to remember
+-----------------------
+Linux has a super administrator account "root".
+"root" is the most powerfull account that can create, modify,delete account and make change to system configuration files.
+Linux is case-sessitive system.
+Avoid using file names with space.
+
+=========================================
+File System Structure and its Description
+---------------------------------------------------
+/boot                    -Contain file that is used by the boot loader(grub.cfg)
+/root                     -root user home directory.It is not same as / .
+/dev                      -System devices(e.g. cdrom,speaker,flashdrive,keyboard etc.)
+/etc                       -Configuration files(e.g. ntfs,nfs etc.)
+/bin ->/usr/bin   -Everyday user commands(e.g. "ps -ef", "top"  etc.)
+/sbin ->/usr/bin -System/filesystem commands(e.g. any configuration change  commands)
+/opt                      -Optinal add_on application(Not part of OS apps / thirs pary installation path like "Oracle, Commvault, etc.")
+/proc                    -Running processes (Ony exist in memory)
+/lib ->usr/bin      -C programming library files needed by commands and appps(e.g. pwd,ls  etc.)
+/tmp                    -Directory for temporary files
+/home                -Directory for user
+/var                     -System logs
+/mnt                    -To  mount external filesystem (e.g. NFS)
+/media                -For cdrom mounts.
