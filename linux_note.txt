@@ -163,3 +163,99 @@ File System Structure and its Description
 /var                     -System logs
 /mnt                    -To  mount external filesystem (e.g. NFS)
 /media                -For cdrom mounts.
+================================================
+File System Navigation Commands (cd , ls and pwd)
+
+File System Paths
+----------------------
+There are two paths to navigate to a filesytem:
+1-Absolute Pah
+2-Relative Path
+
+->An Absolute path does not begin a "/" . This indicates that path starts at root directory.
+     e.g. 
+    #cd /var/log/samba
+->A relative path does not start with a "/" . It dentifies a location relative to your current position.
+    e.g.
+    # cd /var
+    # cd log
+    #cd samba
+=======================================
+Directory Listing Attributes
+========================
+ Type                    Link     Owner      Group        Size       Month       Day      Time        Name
+drwxr-xr-x           1       NITESH    197121       0             Jun             29       2019        MicrosoftEdgeBackups/
+-rw-r--r-- 1 NITESH 197121   81920 Jun 29  2019  ntuser.dat.LOG2
+-rw-r--r-- 1 NITESH 197121  905216 Jun 29  2019  ntuser.dat.LOG1
+-rw-r--r-- 1 NITESH 197121  524288 Jun 29  2019  NTUSER.DAT{fd9a35db-49fe-11e9-aa2c-248a07783950}.TMContainer00000000000000000002.regtrans-ms
+lrwxrwxrwx 1 NITESH 197121      25 Jun 29  2019 'My Documents' -> /c/Users/NITESH/Documents/
+lrwxrwxrwx 1 NITESH 197121      67 Jun 29  2019  NetHood -> '/c/Users/NITESH/AppData/Roaming/Microsoft/Windows/Network Shortcuts'/
+lrwxrwxrwx 1 NITESH 197121      31 Jun 29  2019 'Application Data' -> /c/Users/NITESH/AppData/Roaming/
+lrwxrwxrwx 1 NITESH 197121      67 Jun 29  2019  PrintHood -> '/c/Users/NITESH/AppData/Roaming/Microsoft/Windows/Printer Shortcuts'/
+lrwxrwxrwx 1 NITESH 197121      56 Jun 29  2019  SendTo -> /c/Users/NITESH/AppData/Roaming/Microsoft/Windows/SendTo/
+lrwxrwxrwx 1 NITESH 197121      56 Jun 29  2019  Recent -> /c/Users/NITESH/AppData/Roaming/Microsoft/Windows/Recent/
+lrwxrwxrwx 1 NITESH 197121      60 Jun 29  2019 'Start Menu' -> '/c/Users/NITESH/AppData/Roaming/Microsoft/Windows/Start Menu'/
+lrwxrwxrwx 1 NITESH 197121      59 Jun 29  2019  Templates -> /c/Users/NITESH/AppData/Roaming/Microsoft/Windows/Templates/
+lrwxrwxrwx 1 NITESH 197121      29 Jun 29  2019 'Local Settings' -> /c/Users/NITESH/AppData/Local/
+lrwxrwxrwx 1 NITESH 197121      59 Jun 29  2019  Cookies -> /c/Users/NITESH/AppData/Local/Microsoft/Windows/INetCookies/
+-rw-r--r-- 1 NITESH 197121      20 Jun 29  2019  ntuser.ini
+drwxr-xr-x 1 NITESH 197121       0 Jun 29  2019  AppData/
+drwxr-xr-x 1 NITESH 197121       0 Jun 29  2019  ../
+-rw-r--r-- 1 NITESH 197121      13 Dec 24 23:15  README.md
+-rw-r--r-- 1 NITESH 197121  524288 Dec 25 00:05  NTUSER.DAT{fd9a35db-49fe-11e9-aa2c-248a07783950}.TMContainer00000000000000000001.regtrans-ms
+-rw-r--r-- 1 NITESH 197121   65536 Dec 25 00:05  NTUSER.DAT{fd9a35db-49fe-11e9-aa2c-248a07783950}.TM.blf
+
+ d- directory
+l-link 
+- file 
+================================================
+Linux File System
+-------------------------
+-       -Regular file
+d     - Directory
+l      - link
+c      -Special file or device file (any thing which we have attached with machine like keyboard,cpu,memory will create a file also)
+s    - Socket
+p    -Named pipe
+b   -Block device
+===========================================
+Find file and directories
+-------------------------------
+Two main cmds are used to find file/directories
+. find
+.locate
+
+for e.g
+#find .-name "filename"     ("." mean in this sysntex is current directories) 
+#locate filename  (it will show complete path with same result as find cmds)
+
+->If "locate" cmd does not output any result then rootrun:
+#updatedb  (Run it as a root user)
+->Also make sure you have mlocate package installed. To install package as root run:
+#yum install mlocate"
+ 
+Difference b/w locate & find cmd
+------------------------------------------
+ ->locate used prebuilt database which should be regularly updated, while "find" cmd iterates over filesystem to locate file .Thus, locate is much faster than find, but can be inaccurate if the database (can beseen as a cache) is not upadted.Its mean if DB is upadted then "locate" cmd faster but if DB isn't updated then it can give inaccurate output.
+->To update DB run "updatedb" (If you don't want to run this cmd system runs this cms at regular time of interval)
+#updatedb  (run it as root user)
+==================================
+Wildcard
+--------------
+\      =(slash  -"as an escape charecter")
+^    =(caret   -"the begining of the line")
+$  =(dollar sign  -"the end of the line")
+*   -Represents zero or more charecters
+?   -Represents a single charecter
+[] -Represent range of charecter
+For e.g.
+# touch abc{1...9}-xyg  (It will create 9 files as "abc1-xyg ,abc2-xyg .....abc9-xyg ")
+
+=====================================================
+Soft link and Hard link
+------------------------------------
+->inode =Pointer or number of a file on the hard disk
+->Soft Link  =Link will be removed if file is removed or renamed
+->Hard Link   =Deleting renaming or moving the original file will not affect the hard link.
+ln        -hard link
+ln -s    -soft link
