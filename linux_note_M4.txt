@@ -1,0 +1,13 @@
+Command Systax
+================
+#Command option(s) argument(s)
+
+Option:
+->Modify the way that a command works.
+->Usually consist of a hyphen or dash followed by single letter.
+->Some commands accept multiple option which can usually be grouped together after a single option.
+
+Argument:
+->Most cmds are used together with one or more arguments.
+->Some cmds assume a default argument if non is supplied.
+->Arguments are optinal for some cmds and requireed by others.
