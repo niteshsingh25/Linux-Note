@@ -11,3 +11,27 @@ Argument:
 ->Most cmds are used together with one or more arguments.
 ->Some cmds assume a default argument if non is supplied.
 ->Arguments are optinal for some cmds and requireed by others.
+
+==============================
+File Permission
+--------------------
+->Linux is a multi-user operating system, so it has security to prevent people from accessing each other’s confidential files.
+
+->There are three type of Permissions are:
+       r – Read
+      w – Write
+      x – Execute
+->Each Permission (rwx) can be controlled at three level:
+     u – Owner
+     g – Group
+     o – Others
+     a – All users
+->The potential Assignment Operators are + (plus) and – (minus); these are used to tell the system whether to add or remove the specific permissions.
+
+Advanced Permissions:
+The special permissions flag can be marked with any of the following:
+    _ – no special permissions
+   d – directory
+   l– The file or directory is a symbolic link
+   s – This indicated the setuid/setgid permissions. This is not set displayed in the special permission part of the permissions display, but is represented as a s in the read portion of the owner or group permissions.
+   t – This indicates the sticky bit permissions. This is not set displayed in the special permission part of the permissions display, but is represented as a t in the executable portion of the all users permissions.
