@@ -78,3 +78,141 @@ Syntax: chmod options permissions file name
     #chmod g+u filename
 ->Add a sticky bit to a given directory:
     #chmod o+t dirname
+===============================================
+Access Control Lists(ACL) in Linux
+What is ACL ?
+Access control list (ACL) provides an additional, more flexible permission mechanism for file systems. It is designed to assist with UNIX file permissions. ACL allows you to give permissions for any user or group to any disc resource.
+
+Use of ACL :
+Think of a scenario in which a particular user is not a member of group created by you but still you want to give some read or write access, how can you do it without making user a member of group, here comes in picture Access Control Lists, ACL helps us to do this trick.
+Basically,ACLs are used to make a flexible permission mechanism in Linux.
+->Commands to assign and remove ACL permissions are:
+     setfacl  and getfacl
+List of cmds for setting up ACL:
+---------------------------------------
+1)To add permission for user
+   #setfacl -m u:user:rwx  /path/to/file
+2)To add permission for a group
+   ##setfacl -m g:group :rw  /path/to/file
+3)To allow all file or directories to inherit ACL entry from the directory it is within(Mean Cascading)
+   #setfacl -dm "entry" /path/to/file
+4)To remove a specific file
+   #setfacl -x u:user:rwx  /path/to/file (For a specific file)
+5)To remove all entries
+   #setfacl -b /pathto/file
+Note:
+->As you assign the ACL permission to afile/directories it add +sign at the end of the permission.
+->Setting w permission with ACL does not allow to remove a file.
+==========================================
+Help Commands
+-----------------------------
+->There are 3 type of help commands
+     ->whatis command
+     ->command --help
+     ->man command
+===============================================
+Adding Text to File (Redirect)
+ -> vi
+ -> Redirect command output > or >>
+ -> echo > or >>
+-------------------------------
+#echo "How are You ?" >jerry 
+#cat jerry   (You can check the content of file)
+How are you ?
+#echo "I am fine " >>jerry 
+Note- ">" - It will wipeout/overwrite all the existing content so we need to use ">>" to avoid overwrite.It will write from second line of existing content.NITESH@DESKTOP-VV0PNS0 MINGW64 
+
+->> 
+$ ls -ltr >>test1     (It will write all the output of "ls -ltr" cmd in test1 file)
+
+For e.g:
+NITESH@DESKTOP-VV0PNS0 MINGW64 /f/projects/Linux-Note (master)
+$ ls -ltr
+total 3249
+-rw-r--r-- 1 NITESH 197121      36 Dec 30 20:07  README.md
+-rw-r--r-- 1 NITESH 197121  646601 Dec 30 20:10 'Linux Comman Operation cmds..pdf'
+-rw-r--r-- 1 NITESH 197121  454872 Dec 30 20:10 'Linux Performance Monitoring.pdf'
+-rw-r--r-- 1 NITESH 197121 2034556 Dec 30 20:10  Linux-101-Hacks.pdf
+-rw-r--r-- 1 NITESH 197121  147889 Jan  5 21:32  keyboard-shortcuts-linux.pdf
+-rw-r--r-- 1 NITESH 197121   17476 Jan 12 11:03  linux_note.txt
+-rw-r--r-- 1 NITESH 197121    3373 Jan 16 19:54 'Linux different flavours.txt'
+-rw-r--r-- 1 NITESH 197121    5705 Feb  1 08:25  linux_note_M4.txt
+-rw-r--r-- 1 NITESH 197121       0 Feb  8 20:55  test1
+
+NITESH@DESKTOP-VV0PNS0 MINGW64 /f/projects/Linux-Note (master)
+$ ls -ltr >>test1  
+
+NITESH@DESKTOP-VV0PNS0 MINGW64 /f/projects/Linux-Note (master)
+$ ls -ltr
+total 3250
+-rw-r--r-- 1 NITESH 197121      36 Dec 30 20:07  README.md
+-rw-r--r-- 1 NITESH 197121  646601 Dec 30 20:10 'Linux Comman Operation cmds..pdf'
+-rw-r--r-- 1 NITESH 197121  454872 Dec 30 20:10 'Linux Performance Monitoring.pdf'
+-rw-r--r-- 1 NITESH 197121 2034556 Dec 30 20:10  Linux-101-Hacks.pdf
+-rw-r--r-- 1 NITESH 197121  147889 Jan  5 21:32  keyboard-shortcuts-linux.pdf
+-rw-r--r-- 1 NITESH 197121   17476 Jan 12 11:03  linux_note.txt
+-rw-r--r-- 1 NITESH 197121    3373 Jan 16 19:54 'Linux different flavours.txt'
+-rw-r--r-- 1 NITESH 197121    5705 Feb  1 08:25  linux_note_M4.txt
+-rw-r--r-- 1 NITESH 197121     636 Feb  8 20:55  test1
+
+NITESH@DESKTOP-VV0PNS0 MINGW64 /f/projects/Linux-Note (master)
+$ cat test1 (Verify by "cat" cmd)
+total 3249
+-rw-r--r-- 1 NITESH 197121      36 Dec 30 20:07 README.md
+-rw-r--r-- 1 NITESH 197121  646601 Dec 30 20:10 Linux Comman Operation cmds..pdf
+-rw-r--r-- 1 NITESH 197121  454872 Dec 30 20:10 Linux Performance Monitoring.pdf
+-rw-r--r-- 1 NITESH 197121 2034556 Dec 30 20:10 Linux-101-Hacks.pdf
+-rw-r--r-- 1 NITESH 197121  147889 Jan  5 21:32 keyboard-shortcuts-linux.pdf
+-rw-r--r-- 1 NITESH 197121   17476 Jan 12 11:03 linux_note.txt
+-rw-r--r-- 1 NITESH 197121    3373 Jan 16 19:54 Linux different flavours.txt
+-rw-r--r-- 1 NITESH 197121    5705 Feb  1 08:25 linux_note_M4.txt
+-rw-r--r-- 1 NITESH 197121       0 Feb  8 20:55 test1
+==========================================================
+Standard Output to a File(tee)
+->"tee" cmds is used to store and view (both at the same time)the output of any cmd.
+->The cmd is named after the T-splitter used in plumbing .It basically break the output of a program so that it can be both displayed and save in a file. It does both the task simultaneously,copies the result into the specified file or variables and also display the result.
+  cmd --> tee --> stdout
+                    |
+                  file
+Note- We can use "tee" with "echo" cmds to recieve output of cmd.
+             echo "text" >filename (Same result but it will not show output)      or  echo "text" |tee filename    (Same result but it will show output)
+             echo "text" >>filename (Same result but it will not show output)    or   echo "text" |tee -a filename  (Same result but it will show output)
+==========================================================
+Filters/text Processors Commands
+-----------------------------------------
+cut
+awk
+grep and egrep
+sort
+uniq
+wc
+--------------------------------------
+"cut " Text processors Cmds
+->"cut" command line utilit that allow you to cut part of lines from specified files or piped data and print result to output.It can be used to cut parts of a line by delimiter,bytes position, and character.
+   cut filename                                =Does not work
+   cut --version                                =Check Version
+   cut -c1 filename                          =List one parameter
+   cut -c1,2,4 filename                   =Pick and chose character
+  cut -c1-3 filename                        =List range of character
+  cut -c1-3,6-8 filename                 =List specific range of character
+  cut -b1-3 filename                        =List by byte size
+  cut -d: -f 6 /etc/passwd               =List first 6th column seperated by :
+   cut -d: -f 6-7 /etc/passwd          =List first 6 and 7th column seperated:
+   ls -l |cut -c2-4                                =Only print user permission of files/dir
+----------------------------------------------------------------------------------
+"awk" -Text Processors Commands
+ -"awk" is a utility/language designed for dta extraction.Most of the time it is used to extract fields from a file or from an output.
+  awk --version                                                             =Check version
+  awk '{print $1}' filename                                         =List 1st field from a file
+   ls -l | awk '{print $1,$3}'                                          =List 1st and 3rd fiels of ls -l output
+   ls -l | awk '{print $NF}'                                            =List field of a output
+   awk '/field/ {print}' filename                                 =Search for a specific word
+   awk -F: '{print $1}' /etc/passwd                           =Output only 1st field pf /etc/passwd
+   echo "Hello" | awk '{$2="Adam";print $0}'        =Replace word field words
+   cat file | awk '{$2="nitesh";print $0}'                  =Replace word field words
+   awk 'length($0) >15' file                                        =Get the line have more tan 15 byte size
+   ls -l | awk '{if($9 == "seinfeld") print $0;}'           =Get the field matching seinfeld in working directories
+   ls - | awk '{print NF}'                                                 =Number of field
+----------------------------------------------------------------------------------
+
+  
